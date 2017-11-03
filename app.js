@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const expressValidator = require('express-validator');
 
 const app = express();
 
@@ -15,6 +16,30 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // set static path
 app.use(express.static(path.join(__dirname, 'public')));
+
+// bad practice section
+app.use((req, res, next) => {
+  res.locals.errors = null;
+  next();
+});
+
+// express validator middleware
+app.use(expressValidator({
+  errorFormatter: (param, msg, value) => {
+    let namespace = param.split('.')
+    , root = namespace.shift()
+    , formParam = root;
+
+  while (namespace.length) {
+    formParam += '[' + namespace.shift() + ']';
+  }
+  return {
+    param : formParam,
+    msg : msg,
+    value : value
+  };
+  }
+}));
 
 let users = [
       {
@@ -42,6 +67,34 @@ app.get('/', (req, res) => {
     title: 'customers',
     users: users
   });
+});
+
+// this handles the form's POST method and action-'/users/add'
+// this saves the submitted form data as a newUser
+app.post('/users/add', (req, res) => {
+
+  req.checkBody('firstName', 'first name is required').notEmpty();
+  req.checkBody('lastName', 'last name is required').notEmpty();
+  req.checkBody('email', 'email is required').notEmpty();
+
+  let errors = req.validationErrors();
+  
+  if (errors) {
+    console.log('errors.. please enter creds');
+    res.render('index', {
+      title: 'customers',
+      users: users,
+      errors: errors
+    });
+  } else {
+    let newUser = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email
+    }
+  console.log('success', newUser);
+  }
+  
 });
 
 app.listen(3000, () => {

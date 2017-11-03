@@ -2,3 +2,17 @@
 {{#each users}}
 <li>{{this.firstName}}</li>
 {{/each}}
+
+<h3>add customer</h3>
+{{#each errors}}
+<div>{{this.msg}}</div>
+{{/each}}
+<form method='POST' action='/users/add'>
+  <label>first name</label>
+  <input type='text' name='firstName'><br>
+  <label>last name</label>
+  <input type='text' name='lastName'><br>
+  <label>email</label>
+  <input type='text' name='email'><br><br>
+  <input type='submit' value='submit'>
+</form>
