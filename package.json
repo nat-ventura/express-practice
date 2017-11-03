@@ -1,0 +1,26 @@
+{
+  "name": "express-practice",
+  "version": "1.0.0",
+  "description": "Notes and review~~~~~~~~~~~ * Middleware * Routing * Forms and Input * Models, ORM & Databases",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "nodemon": "^1.12.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nat-ventura/express-practice.git"
+  },
+  "author": "natalievillasana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nat-ventura/express-practice/issues"
+  },
+  "homepage": "https://github.com/nat-ventura/express-practice#readme"
+}
