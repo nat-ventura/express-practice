@@ -6,5 +6,6 @@ Notes and review~~~~~~~~~~~
 * Forms and Input
 * Models, ORM & Databases
 
-## Middleware
-Functions that have access to req, res object and access to `next` piece of middleware that fires after.
+traversy crash course - https://www.youtube.com/watch?v=gnsO8-xJ8rs
+
+codedamn advanced routing - https://www.youtube.com/watch?v=26wm0IQsDCs
