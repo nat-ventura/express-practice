@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const expressValidator = require('express-validator');
+const multer = require('multer');
 
 const app = express();
 
@@ -68,6 +69,37 @@ app.get('/', (req, res) => {
     users: users
   });
 });
+
+// allowing user to upload one file
+// sends a FormData object to server via XMLHttpRequest
+// let form = document.forms.namedItem('myForm');
+
+// form.addEventListener('submit', (ev) => {
+  
+//   let myFile = document.getElementById('myFile').files[0];
+//   var oData = new FormData(form);
+//   var oReq = new XMLHttpRequest();
+
+//   oReq.open('POST', '/myAction', true);
+//   oReq.onload = (oEvent) => {
+//     if (oReq.status == 200) {
+//       console.log('status is 200')
+//     } else {
+//       console.log('status is not 200');
+//     };
+//     oReq.send(oData);
+//     ev.preventDefault();
+//   }, false);
+
+// app.post('/myAction', (req, res) => {
+//   upload(req, res, (err) => {
+//     if (err) {
+//       return res.end('error uploading file');
+//     }
+//     res.end('file is uploaded');
+//   });
+// });
+
 
 // this handles the form's POST method and action-'/users/add'
 // this saves the submitted form data as a newUser

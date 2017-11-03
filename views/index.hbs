@@ -7,7 +7,7 @@
 {{#each errors}}
 <div>{{this.msg}}</div>
 {{/each}}
-<form method='POST' action='/users/add'>
+<form id='myForm' name='myForm' enctype='multipart/form-data' method='POST' action='/users/add'>
   <label>first name</label>
   <input type='text' name='firstName'><br>
   <label>last name</label>
